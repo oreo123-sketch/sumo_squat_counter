@@ -1,3 +1,5 @@
+Start by setting up the server:
+
 # ObsChart Python Backend
 
 ## Usage
@@ -22,3 +24,9 @@ poetry run python -m obschartpybackend
 
 - Use VSCode and install recommended extensions if you can
 - Run `./scripts/test.sh` before you push to see if there's anything wrong with your code
+
+
+## Then join and test the program from your mobile device by clicking here
+
+https://dashboard.justcoach.io/pi/WVDUNG
+
