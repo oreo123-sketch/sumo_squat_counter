@@ -1,0 +1,7 @@
+build:
+  docker:
+    worker:
+      dockerfile: Dockerfile
+      target: production
+run:
+  worker: python -m obschartpybackend

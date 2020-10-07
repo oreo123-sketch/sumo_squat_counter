@@ -1,0 +1,19 @@
+{
+  "venvPath": ".",
+  "venv": ".venv",
+  "include": ["obschartpybackend", "tests"],
+  "executionEnvironments": [
+    {
+      "root": "obschartpybackend"
+    },
+    {
+      "root": "tests",
+      "extraPaths": ["."]
+    }
+  ],
+  "reportUnusedImport": "error",
+  "reportDuplicateImport": "error",
+  "reportUnusedVariable": "error",
+  "reportUnusedClass": "error",
+  "reportUnusedFunction": "error"
+}
