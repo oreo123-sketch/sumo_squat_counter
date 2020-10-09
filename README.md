@@ -1,11 +1,11 @@
-Start by setting up the server:
-
 # Setup instructions for Python App Builder
 
 ## Notes
 
 - Use VSCode and install recommended extensions if you can
 - Run `./scripts/test.sh` before you push to see if there's anything wrong with your code
+
+Start by setting up the server:
 
 ## Usage
 
