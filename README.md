@@ -1,6 +1,11 @@
 Start by setting up the server:
 
-# ObsChart Python Backend
+# Setup instructions for Python App Builder
+
+## Notes
+
+- Use VSCode and install recommended extensions if you can
+- Run `./scripts/test.sh` before you push to see if there's anything wrong with your code
 
 ## Usage
 
@@ -25,14 +30,6 @@ poetry run python -m obschartpybackend
 https://dashboard.justcoach.io/pi/WVDUNG
 
 
-
-
-
-
-## Notes
-
-- Use VSCode and install recommended extensions if you can
-- Run `./scripts/test.sh` before you push to see if there's anything wrong with your code
 
 
 
