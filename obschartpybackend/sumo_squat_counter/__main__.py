@@ -2,6 +2,8 @@ from obschart import ApplicationRequestHandler, Request
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from scipy.signal import find_peaks
+
 
 
 def smooth(new_averages, box_size):
@@ -51,11 +53,12 @@ class SumoSquatCounter(ApplicationRequestHandler):
         sensor = response["Sensor"]
         dictNumbers = eval(sensor)
         numbers = pd.DataFrame(dictNumbers["accelerometer"])
-
+        #print(numbers)
+        
         sumo_squat_count = 0
-        bottom_x = 0
+        #bottom_x = 0
         top_sumo_squat = 0
-        up_phase = False
+        #up_phase = False
 
         numbers["smoothed_x"] = smooth(numbers["x"], 4)
         numbers["smoothed_y"] = smooth(numbers["y"], 4)
@@ -76,18 +79,31 @@ class SumoSquatCounter(ApplicationRequestHandler):
         numbers["normalised_smoothed_averages"] = new_smoothed_averages
         numbers["even_more_smoothed_normalised_averages"] = smooth(new_smoothed_averages, 6)
         # numbers.to_csv('data.csv')
+        numbers.to_csv(r'C:\Users\Shayan Haider\Desktop\data.csv')
 
-        for n in smooth(new_smoothed_averages, 6):
-            no = float(n)
-            if no < bottom_x:
-                bottom_x = no
-                top_sumo_squat = sumo_squat_count + 1
-            if no < -1.3 and up_phase == False:
-                up_phase = True
-            elif no > 0.5:
-                if up_phase == True:
-                    sumo_squat_count += 1
-                up_phase = False
+        x = numbers['even_more_smoothed_normalised_averages']
+        peaks, _ = find_peaks(x, prominence=0.5, distance=20, height=[0, 3])    #'prominence' to detect 'true' peaks
+                                                                                #'distance' to ignore rapid peaks
+                                                                                # 'height' to ignore false 'over-valued' peaks
+
+        try:
+            if peaks[0] < 15:
+                peaks = np.delete(peaks, 0)
+        except:
+            peaks = []
+        sumo_squat_count = len(peaks)
+
+        #for n in smooth(new_smoothed_averages, 6):
+           # no = float(n)
+            #if no < bottom_x:
+               # bottom_x = no
+                #top_sumo_squat = sumo_squat_count + 1
+            #if no < -1.3 and up_phase == False:
+               # up_phase = True
+            #elif no > 0.5:
+               # if up_phase == True:
+                   # sumo_squat_count += 1
+                #up_phase = False
 
         figure, ax = plt.subplots(1, 1, facecolor="w", edgecolor="k")
         ax.plot(smooth(new_smoothed_averages, 6), "g-", lw=2)   
