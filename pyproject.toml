@@ -6,13 +6,15 @@ authors = ["ObsChart <contact@obschart.co.uk>"]
 
 [tool.poetry.dependencies]
 python = "^3.6.8"
-obschart = "^0.22.0"
 python-dotenv = "^0.12.0"
 matplotlib = "^3.2.1"
 pandas = "^1.0.3"
 pillow = "^7.1.2"
 imgkit = "^1.0.2"
 jinja2 = "^2.11.2"
+scipy = "^1.5.3"
+obschart = "^1.1.0"
+missingno = "^0.4.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

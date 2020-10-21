@@ -10,11 +10,11 @@ from typing import List
 from .sumo_squat_counter.__main__ import SumoSquatCounter  # type:ignore
 
 token = os.environ["OBSCHART_APP_TOKEN"]
-api_url = "https://api.obschart.com/"
+api_url = "https://api.dashboard.justcoach.io/"
 client = ObschartClient(token, api_url=api_url)
 
 requestHandlers: List[ApplicationRequestHandler] = [
-    SumoSquatCounter(ObschartClient("c796ce35-ecb9-42ca-997d-3246a6ec67a9", api_url=api_url)),
+    SumoSquatCounter(ObschartClient("b0fe6221-0765-4f8d-bd1c-dd51edf3e329", api_url=api_url)),
 ]
 
 print("App server running...")

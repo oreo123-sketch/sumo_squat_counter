@@ -1,5 +1,4 @@
 from obschart import ApplicationRequestHandler, Request
-from obschart.gql import gql
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -308,31 +307,6 @@ class SumoSquatCounter(ApplicationRequestHandler):
         #     )
 
     async def on_request(self, request: Request):
-
-        # responses = await self.client._execute(
-        # gql(
-        #     """
-        #     query ProgramTrackActionQuery($id: ID!) {
-        #         programTrackAction(id: $id) {
-        #             responses(first:100){
-        #                     edges{
-        #                         node{
-        #                             response
-        #                             createdAt
-        #                             event{
-        #                                 startDate
-        #                             }
-        #                         }
-        #                     }
-        #                 }
-        #         }
-        #     }
-        # """
-        # ),
-        # {"id": request.action.id},
-        # )
-
-        # print(responses)
         
         #Default parameters
         sumo_CONST_prom      = 0.3                   #0.3
@@ -578,7 +552,7 @@ class SumoSquatCounter(ApplicationRequestHandler):
         image = await self.client.create_image(figure)
         plt.close(figure)
 
-        #Set output - make sure that the output has the same structure each time
+        #Set output
         if (0 <= sumo_squat_count < 3) and (0 <= ROS_count < 5) and (0 <= JJ_count < 3):
             await request.set_output(
                 self.client.build_feedback_data()
@@ -605,7 +579,6 @@ class SumoSquatCounter(ApplicationRequestHandler):
                     image.url,
                 ],
             )
-
         # if sumo_squat_count>0:
         #     # Set output
         #     await request.set_output(
