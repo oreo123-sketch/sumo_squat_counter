@@ -14,7 +14,7 @@ api_url = "https://api.obschart.com/"
 client = ObschartClient(token, api_url=api_url)
 
 requestHandlers: List[ApplicationRequestHandler] = [
-    SumoSquatCounter(ObschartClient("c796ce35-ecb9-42ca-997d-3246a6ec67a9", api_url=api_url)),
+SumoSquatCounter(ObschartClient("c796ce35-ecb9-42ca-997d-3246a6ec67a9", api_url=api_url)),
 ]
 
 print("App server running...")

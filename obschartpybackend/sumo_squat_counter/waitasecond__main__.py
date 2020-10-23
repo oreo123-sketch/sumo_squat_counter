@@ -256,6 +256,7 @@ class SumoSquatCounter(ApplicationRequestHandler):
                     )
                     .add_text(gifs[0])
                     .add_text("![]({})".format(url))
+                    
             )
         else:
             return (
@@ -267,7 +268,7 @@ class SumoSquatCounter(ApplicationRequestHandler):
                     )
                     .add_text(gifs[1])
                     .add_text("![]({})".format(url))
-                    .add_text_field("{}".format(par_list))
+                    
             )
 
         # if sumo_squat_count>0:
@@ -495,32 +496,30 @@ class SumoSquatCounter(ApplicationRequestHandler):
                 self.client.build_feedback_data()
                 .add_text_field("Sumo Squat number")
                 .add_text(gifs[0])
-                .add_image_field("Movement graph")
-                .add_text_field("Configuration data"),
+                .add_text_field("{}".format(parameters_list))
+                .add_image_field("Movement graph"),
                 [
                     "Client did {} sumo squats, {} Run-on-spot Steps, {} Jumping Jacks".format(
                         sumo_squat_count, ROS_count, JJ_count
                     ),
                     image.url,
-                    "{}".format(parameters_list),
                 ],
                  
-            )
+            )#.add_text("{}".format(parameters_list))
         else:
             await request.set_output(
                 self.client.build_feedback_data()
                 .add_text_field("Sumo Squat number")
                 .add_text(gifs[1])
-                .add_image_field("Movement graph")
-                .add_text_field("Configuration data"),
+                .add_text_field("{}".format(parameters_list))
+                .add_image_field("Movement graph"),
                 [
                     "Client did {} sumo squats!! 💪💪💪, {} Run-on-spot Steps, {} Jumping Jacks".format(
                         sumo_squat_count, ROS_count, JJ_count
                     ),
                     image.url,
-                    "{}".format(parameters_list),
                 ],
-            )
+            )#.add_text("{}".format(parameters_list))
 
         # if sumo_squat_count>0:
         #     # Set output
